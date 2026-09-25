@@ -1,0 +1,124 @@
+{
+  "routines": [
+    {
+      "id": "push",
+      "title": "Día 1: Empuje (Pecho, Hombros, Tríceps)",
+      "exercises": [
+        {
+          "name": "Press de Banca con Barra",
+          "sets": 4,
+          "reps": "5-8",
+          "notes": "Movimiento pesado. RIR 1-2."
+        },
+        {
+          "name": "Press Militar (Barra o Mancuernas)",
+          "sets": 3,
+          "reps": "8-10",
+          "notes": "Prioriza el empuje vertical sin arquear la espalda baja."
+        },
+        {
+          "name": "Fondos en Paralelas",
+          "sets": 3,
+          "reps": "8-12",
+          "notes": "Inclínate ligeramente hacia adelante para enfocar en el pecho."
+        },
+        {
+          "name": "Elevaciones Laterales con Mancuernas",
+          "sets": 4,
+          "reps": "12-15",
+          "notes": "Aísla el deltoides lateral. Controla la fase excéntrica."
+        },
+        {
+          "name": "Extensiones de Tríceps en Polea Alta",
+          "sets": 3,
+          "reps": "12-15",
+          "notes": "Usa cuerda o barra V. Codos fijos al torso."
+        }
+      ]
+    },
+    {
+      "id": "pull",
+      "title": "Día 2: Tirón (Espalda, Hombro Posterior, Bíceps)",
+      "exercises": [
+        {
+          "name": "Peso Muerto Tradicional",
+          "sets": 4,
+          "reps": "3-6",
+          "notes": "Fuerza máxima. Mantén la barra pegada a las tibias. RIR 1."
+        },
+        {
+          "name": "Dominadas (Pull-ups) o Jalón al Pecho",
+          "sets": 3,
+          "reps": "8-10",
+          "notes": "Rango de movimiento completo. Retracción escapular al iniciar."
+        },
+        {
+          "name": "Remo con Barra o Mancuerna",
+          "sets": 3,
+          "reps": "8-10",
+          "notes": "Tira desde los codos, no desde las manos."
+        },
+        {
+          "name": "Face Pulls en Polea",
+          "sets": 3,
+          "reps": "15",
+          "notes": "Crucial para hombro posterior y salud articular."
+        },
+        {
+          "name": "Curl de Bíceps con Barra (Recta o EZ)",
+          "sets": 3,
+          "reps": "10-12",
+          "notes": "Control total sin balanceo del torso."
+        },
+        {
+          "name": "Curl Martillo con Mancuernas",
+          "sets": 3,
+          "reps": "10-12",
+          "notes": "Trabaja el braquial y el antebrazo."
+        }
+      ]
+    },
+    {
+      "id": "legs",
+      "title": "Día 3: Piernas y Core",
+      "exercises": [
+        {
+          "name": "Sentadillas con Barra (Back Squat)",
+          "sets": 4,
+          "reps": "5-8",
+          "notes": "Rompe el paralelo si tu movilidad lo permite. RIR 1-2."
+        },
+        {
+          "name": "Prensa de Piernas (Leg Press)",
+          "sets": 3,
+          "reps": "10-12",
+          "notes": "Pies a la anchura de los hombros. No bloquees rodillas al final."
+        },
+        {
+          "name": "Peso Muerto Rumano (RDL)",
+          "sets": 3,
+          "reps": "8-10",
+          "notes": "Enfoque en isquiosurales y glúteos. Espalda recta siempre."
+        },
+        {
+          "name": "Extensiones de Cuádriceps en Máquina",
+          "sets": 3,
+          "reps": "12-15",
+          "notes": "Aprieta un segundo arriba (contracción isométrica)."
+        },
+        {
+          "name": "Elevación de Talones de Pie o Sentado",
+          "sets": 4,
+          "reps": "15-20",
+          "notes": "Movimiento lento. Pausa en el estiramiento abajo."
+        },
+        {
+          "name": "Plancha Abdominal (Plank)",
+          "sets": 3,
+          "reps": "45-60 seg",
+          "notes": "Glúteos apretados, pelvis en retroversión."
+        }
+      ]
+    }
+  ]
+}
