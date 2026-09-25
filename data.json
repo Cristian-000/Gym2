@@ -2,121 +2,109 @@
   "routines": [
     {
       "id": "push",
-      "title": "Día 1: Empuje (Pecho, Hombros, Tríceps)",
+      "title": "Día 1: Pierna y Empuje",
       "exercises": [
         {
-          "name": "Press de Banca con Barra",
+          "name": "Sentadillas en Jaula",
           "sets": 4,
           "reps": "5-8",
-          "notes": "Movimiento pesado. RIR 1-2."
+          "notes": "Iniciamos con pierna. Rompe el paralelo si la movilidad lo permite, mantén el core firme."
         },
         {
-          "name": "Press Militar (Barra o Mancuernas)",
+          "name": "Press de Banca en Jaula",
+          "sets": 4,
+          "reps": "5-8",
+          "notes": "Movimiento pesado de empuje. Usa los soportes de seguridad de la jaula. RIR 1-2."
+        },
+        {
+          "name": "Press Vikingo (Hombros)",
           "sets": 3,
           "reps": "8-10",
-          "notes": "Prioriza el empuje vertical sin arquear la espalda baja."
+          "notes": "Aprovecha la máquina para un empuje vertical muy estable y pesado."
         },
         {
-          "name": "Fondos en Paralelas",
+          "name": "Aperturas en Máquina Mariposa (Pec Deck)",
           "sets": 3,
-          "reps": "8-12",
-          "notes": "Inclínate ligeramente hacia adelante para enfocar en el pecho."
+          "reps": "10-12",
+          "notes": "Aísla el pectoral. Haz una pequeña pausa de un segundo en la máxima contracción."
         },
         {
-          "name": "Elevaciones Laterales con Mancuernas",
-          "sets": 4,
-          "reps": "12-15",
-          "notes": "Aísla el deltoides lateral. Controla la fase excéntrica."
-        },
-        {
-          "name": "Extensiones de Tríceps en Polea Alta",
+          "name": "Extensiones de Tríceps en Polea",
           "sets": 3,
           "reps": "12-15",
-          "notes": "Usa cuerda o barra V. Codos fijos al torso."
+          "notes": "Usa la polea alta. Mantén los codos fijos al torso sin balancear."
         }
       ]
     },
     {
       "id": "pull",
-      "title": "Día 2: Tirón (Espalda, Hombro Posterior, Bíceps)",
+      "title": "Día 2: Pierna y Tirón",
       "exercises": [
         {
-          "name": "Peso Muerto Tradicional",
+          "name": "Peso Muerto",
           "sets": 4,
           "reps": "3-6",
-          "notes": "Fuerza máxima. Mantén la barra pegada a las tibias. RIR 1."
+          "notes": "Iniciamos con la cadena posterior (pierna/espalda). Barra siempre pegada a las tibias."
         },
         {
-          "name": "Dominadas (Pull-ups) o Jalón al Pecho",
+          "name": "Dominadas en Barra",
           "sets": 3,
           "reps": "8-10",
-          "notes": "Rango de movimiento completo. Retracción escapular al iniciar."
+          "notes": "Rango completo. Retracción escapular al iniciar el tirón desde abajo."
         },
         {
-          "name": "Remo con Barra o Mancuerna",
+          "name": "Remo en Máquina Dorian",
           "sets": 3,
           "reps": "8-10",
-          "notes": "Tira desde los codos, no desde las manos."
+          "notes": "Ideal para añadir densidad a la espalda. Controla bien la fase excéntrica (bajada)."
         },
         {
           "name": "Face Pulls en Polea",
           "sets": 3,
           "reps": "15",
-          "notes": "Crucial para hombro posterior y salud articular."
+          "notes": "Tira la cuerda hacia la cara separando las manos. Crucial para la salud del hombro."
         },
         {
-          "name": "Curl de Bíceps con Barra (Recta o EZ)",
+          "name": "Curl de Bíceps en Polea Baja",
           "sets": 3,
           "reps": "10-12",
-          "notes": "Control total sin balanceo del torso."
-        },
-        {
-          "name": "Curl Martillo con Mancuernas",
-          "sets": 3,
-          "reps": "10-12",
-          "notes": "Trabaja el braquial y el antebrazo."
+          "notes": "La polea mantiene la tensión constante en el bíceps durante todo el recorrido."
         }
       ]
     },
     {
       "id": "legs",
-      "title": "Día 3: Piernas y Core",
+      "title": "Día 3: Piernas al completo y Core",
       "exercises": [
         {
-          "name": "Sentadillas con Barra (Back Squat)",
+          "name": "Prensa",
           "sets": 4,
-          "reps": "5-8",
-          "notes": "Rompe el paralelo si tu movilidad lo permite. RIR 1-2."
-        },
-        {
-          "name": "Prensa de Piernas (Leg Press)",
-          "sets": 3,
           "reps": "10-12",
-          "notes": "Pies a la anchura de los hombros. No bloquees rodillas al final."
+          "notes": "Iniciamos con empuje pesado de piernas. No bloquees las rodillas al estirar del todo."
         },
         {
-          "name": "Peso Muerto Rumano (RDL)",
-          "sets": 3,
-          "reps": "8-10",
-          "notes": "Enfoque en isquiosurales y glúteos. Espalda recta siempre."
-        },
-        {
-          "name": "Extensiones de Cuádriceps en Máquina",
+          "name": "Extensiones de Cuádriceps (Banco con polea)",
           "sets": 3,
           "reps": "12-15",
-          "notes": "Aprieta un segundo arriba (contracción isométrica)."
+          "notes": "Aprieta un segundo arriba. Movimiento muy controlado para quemar el cuádriceps."
         },
         {
-          "name": "Elevación de Talones de Pie o Sentado",
+          "name": "Peso Muerto Rumano con Mancuernas",
+          "sets": 3,
+          "reps": "8-10",
+          "notes": "Enfoque en isquiosurales y glúteos. Mantén la espalda recta en todo momento."
+        },
+        {
+          "name": "Elevación de Talones en Prensa",
           "sets": 4,
           "reps": "15-20",
-          "notes": "Movimiento lento. Pausa en el estiramiento abajo."
+          "notes": "Usa la plataforma de la prensa. Pausa de un segundo en el estiramiento máximo."
         },
         {
           "name": "Plancha Abdominal (Plank)",
           "sets": 3,
           "reps": "45-60 seg",
-          "notes": "Glúteos apretados, pelvis en retroversión."
+          "notes": "Glúteos apretados, pelvis ligeramente hacia adentro para proteger la zona lumbar."
         }
       ]
     }
