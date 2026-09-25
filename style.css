@@ -1,0 +1,74 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #121212;
+    color: #e0e0e0;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 800px;
+    margin: 3rem auto;
+    padding: 0 1.5rem;
+}
+
+header { text-align: center; margin-bottom: 2rem; }
+h1 { color: #4CAF50; margin-bottom: 0.5rem; }
+header p { color: #888; }
+
+.tabs {
+    display: flex; gap: 1rem; margin-bottom: 2rem;
+    justify-content: center; flex-wrap: wrap;
+}
+
+.tab-btn {
+    background-color: #1e1e1e; color: #fff;
+    border: 2px solid #4CAF50; padding: 0.75rem 1.5rem;
+    cursor: pointer; border-radius: 6px;
+    font-size: 1rem; font-weight: 600; transition: all 0.3s ease;
+}
+
+.tab-btn:hover { background-color: #2c2c2c; }
+.tab-btn.active { background-color: #4CAF50; color: #121212; }
+
+.routine-content {
+    display: none; background-color: #1e1e1e;
+    padding: 2rem; border-radius: 10px;
+    border-top: 4px solid #4CAF50; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.routine-content.active { display: block; animation: fadeIn 0.4s ease-in-out; }
+
+h2 { margin-bottom: 1.5rem; color: #ffffff; border-bottom: 1px solid #333; padding-bottom: 0.5rem; }
+
+.exercise-list { list-style-type: none; }
+
+.exercise-list li {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.2rem 0; border-bottom: 1px solid #2a2a2a;
+}
+
+.exercise-list li:last-child { border-bottom: none; }
+
+.exercise-info { flex: 1; padding-right: 1rem; }
+.exercise-info strong { color: #b3e5fc; font-size: 1.1rem; display: block; margin-bottom: 0.25rem; }
+.exercise-notes { color: #888; font-size: 0.85rem; font-style: italic; }
+
+.exercise-reps {
+    background-color: #333; padding: 0.4rem 0.8rem;
+    border-radius: 20px; font-size: 0.95rem; color: #ddd;
+    white-space: nowrap; font-weight: bold;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 600px) {
+    .exercise-list li { flex-direction: column; align-items: flex-start; gap: 0.8rem; }
+    .exercise-reps { align-self: flex-start; }
+    .tabs { flex-direction: column; }
+    .tab-btn { width: 100%; }
+}
