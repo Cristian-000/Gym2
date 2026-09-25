@@ -2,12 +2,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const tabsContainer = document.getElementById('tabs-container');
     const contentContainer = document.getElementById('content-container');
     const editorContainer = document.getElementById('editor-container');
-    const jsonEditor = document.getElementById('json-editor');
+    const visualEditorContent = document.getElementById('visual-editor-content');
     const editBtn = document.getElementById('edit-btn');
     const saveJsonBtn = document.getElementById('save-json-btn');
     const cancelEditBtn = document.getElementById('cancel-edit-btn');
     const resetJsonBtn = document.getElementById('reset-json-btn');
-    const editorMsg = document.getElementById('editor-msg');
 
     let currentData = null;
     let savedDayIndex = parseInt(localStorage.getItem('currentRoutineDay')) || 0;
@@ -29,16 +28,14 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // --- RENDERIZADO DE LA APP ---
+    // --- RENDERIZADO DE LA VISTA NORMAL ---
     function renderApp(routines) {
         tabsContainer.innerHTML = '';
         contentContainer.innerHTML = '';
 
-        // Ajustar índice si excede la cantidad de rutinas
         if (savedDayIndex >= routines.length) savedDayIndex = 0;
 
         routines.forEach((routine, index) => {
-            // Pestañas
             const btn = document.createElement('button');
             btn.className = `tab-btn ${index === savedDayIndex ? 'active' : ''}`;
             btn.textContent = `Día ${index + 1}`;
@@ -46,7 +43,6 @@ document.addEventListener('DOMContentLoaded', () => {
             btn.addEventListener('click', () => switchTab(routine.id, index));
             tabsContainer.appendChild(btn);
 
-            // Contenido
             const section = document.createElement('section');
             section.id = routine.id;
             section.className = `routine-content ${index === savedDayIndex ? 'active' : ''}`;
@@ -67,7 +63,6 @@ document.addEventListener('DOMContentLoaded', () => {
             });
             section.appendChild(ul);
 
-            // Botón para terminar el día
             const finishBtn = document.createElement('button');
             finishBtn.className = 'finish-btn';
             finishBtn.textContent = 'Terminar Rutina';
@@ -78,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    function switchTab(targetId, index) {
+    function switchTab(targetId) {
         document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.toggle('active', btn.dataset.target === targetId));
         document.querySelectorAll('.routine-content').forEach(content => content.classList.toggle('active', content.id === targetId));
     }
@@ -89,7 +84,6 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('currentRoutineDay', nextDay);
         savedDayIndex = nextDay;
         
-        // Animación suave y recarga visual
         contentContainer.style.opacity = 0;
         setTimeout(() => {
             renderApp(currentData.routines);
@@ -97,12 +91,63 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 300);
     }
 
-    // --- EDITOR JSON ---
+    // --- EDITOR VISUAL (NUEVO) ---
+    function renderVisualEditor() {
+        visualEditorContent.innerHTML = '';
+
+        currentData.routines.forEach(routine => {
+            const rBlock = document.createElement('div');
+            rBlock.className = 'edit-routine-block';
+            
+            // Título del Día (Ej: Día 1: Pierna y Empuje)
+            rBlock.innerHTML = `<input type="text" class="edit-routine-title" value="${routine.title}" data-id="${routine.id}">`;
+            
+            const exContainer = document.createElement('div');
+            exContainer.className = 'edit-exercises';
+            
+            // Ejercicios
+            routine.exercises.forEach(ex => {
+                exContainer.appendChild(createExerciseEditBlock(ex));
+            });
+
+            // Botón Añadir Ejercicio
+            const addBtn = document.createElement('button');
+            addBtn.className = 'add-ex-btn';
+            addBtn.textContent = '+ Añadir Ejercicio';
+            addBtn.onclick = () => {
+                exContainer.appendChild(createExerciseEditBlock({ name: '', sets: 3, reps: '10', notes: '' }));
+            };
+
+            rBlock.appendChild(exContainer);
+            rBlock.appendChild(addBtn);
+            visualEditorContent.appendChild(rBlock);
+        });
+    }
+
+    function createExerciseEditBlock(ex) {
+        const div = document.createElement('div');
+        div.className = 'edit-ex-block';
+        div.innerHTML = `
+            <div class="edit-ex-header">
+                <input type="text" class="ex-name" value="${ex.name}" placeholder="Nombre del ejercicio">
+                <button class="del-ex-btn" title="Eliminar">✖</button>
+            </div>
+            <div class="edit-ex-row">
+                <label>Series: <input type="number" class="ex-sets" value="${ex.sets}"></label>
+                <label>Reps: <input type="text" class="ex-reps" value="${ex.reps}"></label>
+            </div>
+            <input type="text" class="ex-notes" value="${ex.notes}" placeholder="Notas (RIR, técnica...)">
+        `;
+        // Funcionalidad para eliminar ese bloque
+        div.querySelector('.del-ex-btn').onclick = () => div.remove();
+        return div;
+    }
+
+    // --- ACCIONES DEL EDITOR ---
     editBtn.addEventListener('click', () => {
         contentContainer.classList.add('hidden');
         editorContainer.classList.remove('hidden');
-        jsonEditor.value = JSON.stringify(currentData, null, 2);
-        editorMsg.textContent = '';
+        renderVisualEditor();
     });
 
     cancelEditBtn.addEventListener('click', () => {
@@ -111,20 +156,39 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     saveJsonBtn.addEventListener('click', () => {
-        try {
-            const parsed = JSON.parse(jsonEditor.value);
-            currentData = parsed;
-            localStorage.setItem('gymRoutineData', JSON.stringify(parsed));
-            renderApp(currentData.routines);
-            editorContainer.classList.add('hidden');
-            contentContainer.classList.remove('hidden');
-        } catch (e) {
-            editorMsg.textContent = "Error: El formato JSON no es válido.";
-        }
+        const newRoutines = [];
+        
+        // Recorrer el DOM para reconstruir el objeto JSON
+        document.querySelectorAll('.edit-routine-block').forEach(rBlock => {
+            const titleInput = rBlock.querySelector('.edit-routine-title');
+            const routine = {
+                id: titleInput.dataset.id,
+                title: titleInput.value,
+                exercises: []
+            };
+
+            rBlock.querySelectorAll('.edit-ex-block').forEach(exBlock => {
+                routine.exercises.push({
+                    name: exBlock.querySelector('.ex-name').value,
+                    sets: parseInt(exBlock.querySelector('.ex-sets').value) || 0,
+                    reps: exBlock.querySelector('.ex-reps').value,
+                    notes: exBlock.querySelector('.ex-notes').value
+                });
+            });
+            newRoutines.push(routine);
+        });
+
+        // Guardar y refrescar
+        currentData.routines = newRoutines;
+        localStorage.setItem('gymRoutineData', JSON.stringify(currentData));
+        renderApp(currentData.routines);
+        
+        editorContainer.classList.add('hidden');
+        contentContainer.classList.remove('hidden');
     });
 
     resetJsonBtn.addEventListener('click', () => {
-        if(confirm("¿Restaurar los datos originales? Perderás tus cambios.")) {
+        if(confirm("¿Restaurar los datos originales del archivo? Perderás tus cambios locales.")) {
             localStorage.removeItem('gymRoutineData');
             loadData();
             editorContainer.classList.add('hidden');
