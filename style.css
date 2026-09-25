@@ -1,74 +1,85 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #121212;
-    color: #e0e0e0;
-    line-height: 1.6;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #121212; color: #e0e0e0;
+    padding-bottom: 80px; /* Espacio para el cronómetro */
 }
 
-.container {
-    max-width: 800px;
-    margin: 3rem auto;
-    padding: 0 1.5rem;
+.container { max-width: 600px; margin: 0 auto; padding: 1rem; }
+
+.hidden { display: none !important; }
+
+/* Controles Superiores */
+.top-controls {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 1.5rem;
 }
 
-header { text-align: center; margin-bottom: 2rem; }
-h1 { color: #4CAF50; margin-bottom: 0.5rem; }
-header p { color: #888; }
-
-.tabs {
-    display: flex; gap: 1rem; margin-bottom: 2rem;
-    justify-content: center; flex-wrap: wrap;
-}
+.tabs { display: flex; gap: 0.5rem; }
 
 .tab-btn {
-    background-color: #1e1e1e; color: #fff;
-    border: 2px solid #4CAF50; padding: 0.75rem 1.5rem;
-    cursor: pointer; border-radius: 6px;
-    font-size: 1rem; font-weight: 600; transition: all 0.3s ease;
+    background: transparent; color: #888; border: none;
+    font-size: 1.1rem; font-weight: bold; cursor: pointer; padding: 0.5rem;
 }
+.tab-btn.active { color: #4CAF50; border-bottom: 2px solid #4CAF50; }
 
-.tab-btn:hover { background-color: #2c2c2c; }
-.tab-btn.active { background-color: #4CAF50; color: #121212; }
-
-.routine-content {
-    display: none; background-color: #1e1e1e;
-    padding: 2rem; border-radius: 10px;
-    border-top: 4px solid #4CAF50; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+.action-btn {
+    background-color: #333; color: white; border: none;
+    padding: 0.5rem 1rem; border-radius: 4px; cursor: pointer; font-size: 0.9rem;
 }
+.action-btn.success { background-color: #4CAF50; }
+.action-btn.danger { background-color: #f44336; }
 
-.routine-content.active { display: block; animation: fadeIn 0.4s ease-in-out; }
+/* Lista de Ejercicios */
+.routine-content { display: none; }
+.routine-content.active { display: block; }
 
-h2 { margin-bottom: 1.5rem; color: #ffffff; border-bottom: 1px solid #333; padding-bottom: 0.5rem; }
-
-.exercise-list { list-style-type: none; }
-
+.exercise-list { list-style: none; margin-bottom: 1rem; }
 .exercise-list li {
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 1.2rem 0; border-bottom: 1px solid #2a2a2a;
+    display: flex; justify-content: space-between; align-items: flex-start;
+    padding: 1rem 0; border-bottom: 1px solid #222;
 }
 
-.exercise-list li:last-child { border-bottom: none; }
-
-.exercise-info { flex: 1; padding-right: 1rem; }
-.exercise-info strong { color: #b3e5fc; font-size: 1.1rem; display: block; margin-bottom: 0.25rem; }
-.exercise-notes { color: #888; font-size: 0.85rem; font-style: italic; }
+.exercise-info strong { color: #fff; font-size: 1rem; display: block; }
+.exercise-notes { color: #888; font-size: 0.8rem; margin-top: 0.3rem; }
 
 .exercise-reps {
-    background-color: #333; padding: 0.4rem 0.8rem;
-    border-radius: 20px; font-size: 0.95rem; color: #ddd;
-    white-space: nowrap; font-weight: bold;
+    background-color: #222; padding: 0.3rem 0.6rem;
+    border-radius: 4px; font-size: 0.9rem; font-weight: bold; color: #4CAF50;
+    white-space: nowrap; margin-left: 1rem;
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+.finish-btn {
+    width: 100%; background-color: #4CAF50; color: #121212;
+    border: none; padding: 1rem; border-radius: 8px; font-weight: bold;
+    font-size: 1rem; cursor: pointer; margin-top: 1rem;
 }
 
-@media (max-width: 600px) {
-    .exercise-list li { flex-direction: column; align-items: flex-start; gap: 0.8rem; }
-    .exercise-reps { align-self: flex-start; }
-    .tabs { flex-direction: column; }
-    .tab-btn { width: 100%; }
+/* Editor JSON */
+#editor-container { background-color: #1e1e1e; padding: 1rem; border-radius: 8px; }
+#json-editor {
+    width: 100%; height: 300px; background-color: #121212; color: #0f0;
+    border: 1px solid #333; padding: 0.5rem; font-family: monospace;
+    font-size: 0.9rem; margin-bottom: 1rem; resize: vertical;
 }
+.editor-actions { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+.msg { color: #f44336; margin-top: 0.5rem; font-size: 0.9rem; }
+
+/* Cronómetro Flotante */
+#stopwatch-container {
+    position: fixed; bottom: 0; left: 0; width: 100%;
+    background-color: #1a1a1a; border-top: 1px solid #333;
+    padding: 0.8rem; display: flex; justify-content: space-around; align-items: center;
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.5); z-index: 100;
+}
+
+#display { font-size: 1.5rem; font-weight: bold; font-family: monospace; color: #fff; }
+
+.sw-controls { display: flex; gap: 1rem; }
+.sw-controls button {
+    background: #333; border: none; color: white;
+    width: 40px; height: 40px; border-radius: 50%;
+    font-size: 1.2rem; cursor: pointer; display: flex; align-items: center; justify-content: center;
+}
+.sw-controls button:active { background: #555; }
