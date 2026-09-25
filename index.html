@@ -12,17 +12,19 @@
         <!-- Controles Superiores -->
         <div class="top-controls">
             <nav class="tabs" id="tabs-container"></nav>
-            <button id="edit-btn" class="action-btn">Editar Datos</button>
+            <button id="edit-btn" class="action-btn">Editar</button>
         </div>
 
         <!-- Contenedor Principal de Rutina -->
         <main id="content-container"></main>
 
-        <!-- Panel de Edición (Oculto por defecto) -->
+        <!-- Panel de Edición Visual (Oculto por defecto) -->
         <div id="editor-container" class="hidden">
-            <textarea id="json-editor"></textarea>
+            <h2>Modo Edición</h2>
+            <div id="visual-editor-content"></div>
+            
             <div class="editor-actions">
-                <button id="save-json-btn" class="action-btn success">Guardar</button>
+                <button id="save-json-btn" class="action-btn success">Guardar Cambios</button>
                 <button id="cancel-edit-btn" class="action-btn">Cancelar</button>
                 <button id="reset-json-btn" class="action-btn danger">Restaurar Original</button>
             </div>
