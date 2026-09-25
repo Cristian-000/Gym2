@@ -3,21 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mis Rutinas Dinámicas</title>
+    <title>Rutina</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <header>
-            <h1>Entrenamiento Semanal</h1>
-            <p>Rutina Push / Pull / Legs - Cargada dinámicamente</p>
-        </header>
         
-        <!-- Los botones de navegación se generarán aquí -->
-        <nav class="tabs" id="tabs-container"></nav>
+        <!-- Controles Superiores -->
+        <div class="top-controls">
+            <nav class="tabs" id="tabs-container"></nav>
+            <button id="edit-btn" class="action-btn">Editar Datos</button>
+        </div>
 
-        <!-- El contenido de la rutina se generará aquí -->
+        <!-- Contenedor Principal de Rutina -->
         <main id="content-container"></main>
+
+        <!-- Panel de Edición (Oculto por defecto) -->
+        <div id="editor-container" class="hidden">
+            <textarea id="json-editor"></textarea>
+            <div class="editor-actions">
+                <button id="save-json-btn" class="action-btn success">Guardar</button>
+                <button id="cancel-edit-btn" class="action-btn">Cancelar</button>
+                <button id="reset-json-btn" class="action-btn danger">Restaurar Original</button>
+            </div>
+            <p id="editor-msg" class="msg"></p>
+        </div>
+
+        <!-- Cronómetro Flotante -->
+        <div id="stopwatch-container">
+            <div id="display">00:00</div>
+            <div class="sw-controls">
+                <button id="start-btn">▶</button>
+                <button id="pause-btn">⏸</button>
+                <button id="reset-btn">⏹</button>
+            </div>
+        </div>
+
     </div>
 
     <script src="script.js"></script>
