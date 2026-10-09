@@ -6,8 +6,8 @@ const urlsToCache = [
   './script.js',
   './data.json',
   './manifest.json',
-  './icon-192.png',
-  './icon-512.png'
+  './icon-192.jpg',
+  './icon-512.jpg'
 ];
 
 // Instalación del Service Worker y almacenamiento en caché inicial
